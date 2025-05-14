@@ -26,7 +26,12 @@ const StatsCard = ({
   // Sample data for the mini chart
   const chartData = [
     { x: "Jan", y: lastMonthCount },
-    { x: "Feb", y: currentMonthCount },
+    { x: "Feb", y: lastMonthCount },
+    { x: "Mar", y: lastMonthCount },
+
+    { x: "Oct", y: lastMonthCount },
+    { x: "Nov", y: lastMonthCount },
+    { x: "Dec", y: currentMonthCount },
   ];
 
   return (
