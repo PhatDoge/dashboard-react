@@ -7,3 +7,5 @@ export const appwriteConfig = {
   userCollectionId: import.meta.env.VITE_APPWRITE_USER_COLLECTION_ID,
   tripCollectionId: import.meta.env.VITE_APPWRITE_TRIP_COLLECTION_ID,
 };
+
+//APPWRITE SETUP
