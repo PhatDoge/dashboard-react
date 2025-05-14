@@ -1,7 +1,10 @@
 .DS_Store
 /node_modules/
-/.env.local
 
-# React Router
-/.react-router/
 /build/
+
+/.react-router/
+
+# Ignore environment files
+.env
+.env.*   # includes .env.local, .env.development, etc.
