@@ -5,6 +5,8 @@
 
 /.react-router/
 
-# Ignore environment files
-.env
-.env.*   # includes .env.local, .env.development, etc.
+# .gitignore
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
