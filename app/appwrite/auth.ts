@@ -22,14 +22,9 @@ export const storeUserData = async () => {
     if (!user) throw new Error("User not found");
 
     const { providerAccessToken } = (await account.getSession("current")) || {};
-    let profilePicture = "/assets/images/david.webp"; // Default fallback image
-
-    if (providerAccessToken) {
-      const googlePicture = await getGooglePicture(providerAccessToken);
-      if (googlePicture) {
-        profilePicture = googlePicture;
-      }
-    }
+    const profilePicture = providerAccessToken
+      ? await getGooglePicture(providerAccessToken)
+      : null;
 
     const createdUser = await database.createDocument(
       appwriteConfig.databaseId,
@@ -104,5 +99,22 @@ export const getUser = async () => {
   } catch (error) {
     console.error("Error fetching user:", error);
     return null;
+  }
+};
+
+export const getAllUsers = async (limit: number, offset: number) => {
+  try {
+    const { documents: users, total } = await database.listDocuments(
+      appwriteConfig.databaseId,
+      appwriteConfig.userCollectionId,
+      [Query.limit(limit), Query.offset(offset)]
+    );
+
+    if (total === 0) return { users: [], total };
+
+    return { users, total };
+  } catch (e) {
+    console.log("Error fetching users");
+    return { users: [], total: 0 };
   }
 };
