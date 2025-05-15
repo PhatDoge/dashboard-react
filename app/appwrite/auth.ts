@@ -22,9 +22,14 @@ export const storeUserData = async () => {
     if (!user) throw new Error("User not found");
 
     const { providerAccessToken } = (await account.getSession("current")) || {};
-    const profilePicture = providerAccessToken
-      ? await getGooglePicture(providerAccessToken)
-      : null;
+    let profilePicture = "/assets/images/david.webp"; // Default fallback image
+
+    if (providerAccessToken) {
+      const googlePicture = await getGooglePicture(providerAccessToken);
+      if (googlePicture) {
+        profilePicture = googlePicture;
+      }
+    }
 
     const createdUser = await database.createDocument(
       appwriteConfig.databaseId,
