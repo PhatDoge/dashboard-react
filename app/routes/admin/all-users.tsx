@@ -5,7 +5,7 @@ import {
   GridComponent,
 } from "@syncfusion/ej2-react-grids";
 import { users } from "~/constants";
-import { cn } from "lib/utils";
+import { cn, formatDate } from "lib/utils";
 import { getAllUsers } from "~/appwrite/auth";
 import type { Route } from "./+types/all-users";
 
@@ -46,21 +46,17 @@ const AllUsers = ({ loaderData }: Route.ComponentProps) => {
           <ColumnDirective
             field="email"
             headerText="Email"
-            width="150"
+            width="200"
             textAlign="Left"
           />
           <ColumnDirective
-            field="dateJoined"
+            field="joinedAt"
             headerText="Fecha de Registro"
-            width="120"
+            width="140"
             textAlign="Left"
-          />
-
-          <ColumnDirective
-            field="itineraryCreated"
-            headerText="Viajes Creados"
-            width="130"
-            textAlign="Left"
+            template={({ joinedAt }: { joinedAt: string }) =>
+              formatDate(joinedAt)
+            }
           />
 
           <ColumnDirective
