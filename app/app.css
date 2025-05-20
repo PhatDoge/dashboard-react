@@ -538,3 +538,22 @@ body {
   top: 45px;
   right: 40px;
 }
+
+/* ComboBox Styles */
+.e-input-group.e-control-wrapper .e-input-group-icon {
+  position: absolute;
+  right: 0;
+  color: black;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 8px;
+}
+
+.e-input-group.e-control-wrapper .e-input {
+  padding-right: 32px;
+}
+
+/* Ensure the dropdown icon stays inside the input */
+.e-input-group.e-control-wrapper {
+  position: relative;
+}

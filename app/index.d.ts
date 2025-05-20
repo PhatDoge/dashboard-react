@@ -160,4 +160,6 @@ declare interface TripFormData {
 declare interface HeaderProps {
   title: string;
   description: string;
+  ctaText?: string;
+  ctaUrl?: string;
 }
